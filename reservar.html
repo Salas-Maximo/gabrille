@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabrille</title>
+  <meta name="description" content="Reservá tu mesa en Gabrille: elegí cuántas personas son, el día y el horario.">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/estilos.css" rel="stylesheet">
+  <link href="css/formularios.css" rel="stylesheet">
+  <link href="css/reservar.css" rel="stylesheet">
+</head>
+<body>
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg barra-navegacion" aria-label="Principal">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="img/logo.svg" width="120" height="32" alt="Gabrille"></a>
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="reservar.html">Reservar</a></li>
+            <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="proceso.html">Proceso</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido" class="reserva">
+    <div class="container">
+      <header class="encabezado-pagina">
+        <h1>Reservá tu mesa</h1>
+        <p>Elegí cuántos son, el día y el horario. Atendemos de martes a domingo, de 20:00 a 2:00 hs.</p>
+      </header>
+
+      <section id="paso-reserva">
+        <div class="card-formulario">
+          <h2>Configurá tu reserva</h2>
+
+          <div class="bloque-reserva">
+            <h3 id="titulo-personas">¿Cuántas personas?</h3>
+            <div id="lista-personas" class="personas" role="group" aria-labelledby="titulo-personas"></div>
+            <p class="nota-reserva">¿Son más de 10? Escribinos desde <a href="contacto.html">Contacto</a>.</p>
+          </div>
+
+          <div class="columnas-reserva">
+            <div class="col-reserva">
+              <div class="bloque-reserva">
+                <h3>¿Qué día?</h3>
+                <div role="group" aria-labelledby="calendario-mes">
+                  <div class="cabecera-calendario">
+                    <button type="button" id="boton-mes-anterior" onclick="cambiarMes(-1)" aria-label="Mes anterior">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"/></svg>
+                    </button>
+                    <p id="calendario-mes" aria-live="polite"></p>
+                    <button type="button" id="boton-mes-siguiente" onclick="cambiarMes(1)" aria-label="Mes siguiente">
+                      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                  <div class="semana-calendario" aria-hidden="true">
+                    <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span><span>Do</span>
+                  </div>
+                  <div id="calendario-dias" class="dias-calendario"></div>
+                </div>
+                <ul class="leyenda list-unstyled">
+                  <li><span class="punto punto-libre"></span> Hay lugar</li>
+                  <li><span class="punto punto-lleno"></span> Lleno</li>
+                  <li><span class="punto punto-espera"></span> Lista de espera</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-reserva">
+              <div class="bloque-reserva">
+                <h3>¿Qué horario?</h3>
+                <div id="lista-horarios"></div>
+              </div>
+
+              <div class="resumen-reserva resumen-reserva-base">
+                <div aria-live="polite">
+                  <p id="resumen-fecha"></p>
+                  <p id="resumen-personas"></p>
+                </div>
+                <button type="button" id="boton-continuar" class="btn btn-acento" onclick="irAPasoDatos()" disabled>Continuar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="paso-datos" class="paso-datos-reserva" hidden>
+        <div class="card-formulario">
+          <div class="resumen-reserva resumen-reserva-arriba">
+            <div>
+              <p id="datos-fecha"></p>
+              <p id="datos-personas"></p>
+            </div>
+            <button type="button" class="boton-texto" onclick="mostrarPaso('reserva')">Cambiar</button>
+          </div>
+
+          <h2>Tus datos</h2>
+
+          <form id="form-reserva" class="formulario" novalidate onsubmit="confirmarReserva(event)">
+            <div class="mb-3">
+              <label for="reserva-nombre" class="form-label">Nombre y apellido</label>
+              <input type="text" class="form-control" id="reserva-nombre" name="nombre" autocomplete="name" minlength="3" maxlength="60" required>
+              <div class="invalid-feedback">Ingresá tu nombre y apellido.</div>
+            </div>
+            <div class="mb-3">
+              <label for="reserva-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="reserva-email" name="email" autocomplete="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+              <div class="invalid-feedback">Ingresá un email válido, por ejemplo nombre@correo.com.</div>
+            </div>
+            <div class="mb-3">
+              <label for="reserva-telefono" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="reserva-telefono" name="telefono" autocomplete="tel" pattern="[0-9 +\-]{8,20}" required>
+              <div class="invalid-feedback">Ingresá un teléfono de 8 a 20 dígitos.</div>
+            </div>
+            <div class="mb-4">
+              <label for="reserva-comentarios" class="form-label">Comentarios <small>(opcional)</small></label>
+              <textarea class="form-control" id="reserva-comentarios" name="comentarios" rows="3" maxlength="200"></textarea>
+            </div>
+            <button type="submit" class="btn btn-principal w-100">Confirmar reserva</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="container">
+      <a class="logo-pie" href="index.html"><img src="img/logo.svg" width="120" height="36" alt="Gabrille"></a>
+
+      <nav aria-label="Pie de página">
+        <h2>Navegación</h2>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reservar.html">Reservar</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="proceso.html">Proceso</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="visita-pie">
+        <h2>Visitanos</h2>
+        <address>
+          Av. Corrientes 1450, CABA<br>
+          Martes a domingo<br>
+          20:00 a 2:00 hs
+        </address>
+      </div>
+
+      <ul class="redes-pie list-unstyled" aria-label="Redes sociales">
+        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><img src="img/ig.svg" width="24" height="24" alt="Instagram"></a></li>
+        <li><a href="https://www.x.com/" target="_blank" rel="noopener"><img src="img/x.svg" width="24" height="24" alt="X"></a></li>
+        <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener"><img src="img/tt.svg" width="24" height="24" alt="TikTok"></a></li>
+      </ul>
+
+      <ul class="datos-pie list-unstyled">
+        <li>Salas Máximo</li>
+        <li>Programación I · Desarrollo II</li>
+        <li>DGD2A · 2026</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="modal fade modal-demo" id="modal-reserva" tabindex="-1" aria-labelledby="titulo-reserva" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="titulo-reserva">¡Reserva registrada!</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="reiniciarReserva()" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p id="detalle-reserva"></p>
+          <p class="mb-0">Esta es una demostración: no se envió ni se guardó ningún dato.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-acento" data-bs-dismiss="modal" onclick="reiniciarReserva()">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/reservar.js"></script>
+</body>
+</html>

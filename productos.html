@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabrille</title>
+  <meta name="description" content="Las salsas de Gabrille, hechas en casa: preferidas, picantes y más. Elegí tus favoritas y llevalas a tu mesa.">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;1,700&family=Syne:wght@400..800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/estilos.css" rel="stylesheet">
+  <link href="css/productos.css" rel="stylesheet">
+
+  <script src="js/productos.js"></script>
+</head>
+<body>
+  <a class="visually-hidden-focusable" href="#contenido">Saltar al contenido</a>
+
+  <header>
+    <nav class="navbar navbar-expand-lg barra-navegacion" aria-label="Principal">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Abrir menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><img src="img/logo.svg" width="120" height="32" alt="Gabrille"></a>
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="reservar.html">Reservar</a></li>
+            <li class="nav-item"><a class="nav-link active" href="productos.html">Productos</a></li>
+            <li class="nav-item"><a class="nav-link" href="proceso.html">Proceso</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+
+    <section class="catalogo catalogo-claro">
+      <div class="container">
+        <h1>Nuestras<br>salsas</h1>
+        <h3>Las preferidas</h3>
+        <script>escribirCarrusel("preferidas", "Las preferidas");</script>
+      </div>
+    </section>
+
+    <section class="catalogo catalogo-naranja">
+      <div class="container">
+        <h3>Las picantes</h3>
+        <script>escribirCarrusel("picantes", "Las picantes");</script>
+      </div>
+    </section>
+
+    <section class="catalogo catalogo-verde">
+      <div class="container">
+        <h3>Más salsas</h3>
+        <script>escribirCarrusel("mas", "Más salsas");</script>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="container">
+      <a class="logo-pie" href="index.html"><img src="img/logo.svg" width="120" height="36" alt="Gabrille"></a>
+
+      <nav aria-label="Pie de página">
+        <h2>Navegación</h2>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reservar.html">Reservar</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="proceso.html">Proceso</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="visita-pie">
+        <h2>Visitanos</h2>
+        <address>
+          Av. Corrientes 1450, CABA<br>
+          Martes a domingo<br>
+          20:00 a 2:00 hs
+        </address>
+      </div>
+
+      <ul class="redes-pie list-unstyled" aria-label="Redes sociales">
+        <li><a href="https://www.instagram.com/" target="_blank" rel="noopener"><img src="img/ig.svg" width="24" height="24" alt="Instagram"></a></li>
+        <li><a href="https://www.x.com/" target="_blank" rel="noopener"><img src="img/x.svg" width="24" height="24" alt="X"></a></li>
+        <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener"><img src="img/tt.svg" width="24" height="24" alt="TikTok"></a></li>
+      </ul>
+
+      <ul class="datos-pie list-unstyled">
+        <li>Salas Máximo</li>
+        <li>Programación I · Desarrollo II</li>
+        <li>DGD2A · 2026</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="aviso-carrito" class="toast aviso-carrito" role="status" aria-live="polite" aria-atomic="true">
+      <div class="producto-aviso">
+        <div id="aviso-imagen" class="imagen-aviso"></div>
+        <div class="texto-aviso">
+          <p id="aviso-nombre"></p>
+          <p>¡Agregado al carrito!</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Cerrar aviso"></button>
+      </div>
+      <div class="pie-aviso">
+        <p><span id="aviso-cantidad"></span> <strong id="aviso-total"></strong></p>
+        <button type="button" class="btn btn-principal w-100" data-bs-toggle="offcanvas" data-bs-target="#panel-carrito" onclick="ocultarAvisoCarrito()">Ver carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end panel-carrito" tabindex="-1" id="panel-carrito" aria-labelledby="titulo-carrito">
+    <div class="offcanvas-header">
+      <h2 class="offcanvas-title" id="titulo-carrito">Carrito de compras</h2>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar carrito"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul id="lista-carrito" class="list-unstyled"></ul>
+      <p id="texto-carrito-vacio">Tu carrito está vacío.</p>
+    </div>
+    <div class="pie-carrito">
+      <p><span>Total:</span> <strong id="total-carrito">$0</strong></p>
+      <button type="button" id="boton-comprar" class="btn btn-principal w-100" onclick="finalizarCompra()">FINALIZAR COMPRA</button>
+      <button type="button" class="boton-texto" data-bs-dismiss="offcanvas">Ver más productos</button>
+    </div>
+  </div>
+
+  <div class="modal fade modal-demo" id="modal-compra" tabindex="-1" aria-labelledby="titulo-compra" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="titulo-compra">¡Gracias por tu compra!</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p id="detalle-compra"></p>
+          <p class="mb-0">Esta es una demostración: no se realizó ningún cobro.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-acento" data-bs-dismiss="modal">Seguir mirando</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade modal-novedad" id="modal-novedad" tabindex="-1" aria-labelledby="titulo-novedad" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <h2 class="visually-hidden" id="titulo-novedad">Nueva salsa</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar anuncio"></button>
+        <img src="img/productos/anuncio-salsa.webp" alt="Anuncio de la nueva salsa de Gabrille">
+        <button type="button" class="btn btn-acento" data-bs-dismiss="modal" onclick="agregarAlCarrito(idProductoNuevo)">Pedila ya</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/comun.js"></script>
+  <script src="js/carrito.js"></script>
+  <script>mostrarModal("modal-novedad");</script>
+</body>
+</html>

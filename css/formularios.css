@@ -1,0 +1,150 @@
+.encabezado-pagina {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.encabezado-pagina h1 {
+  margin-bottom: 0.75rem;
+  font-size: var(--titulo-1);
+}
+
+.encabezado-pagina p {
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.card-formulario {
+  --relleno-x: 1.25rem;
+  --relleno-y: 1.5rem;
+  padding: var(--relleno-y) var(--relleno-x);
+  background-color: var(--blanco);
+  box-shadow: var(--sombra);
+}
+
+.card-formulario h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.formulario {
+  --bs-form-invalid-color: var(--acento-hover);
+  --bs-form-invalid-border-color: var(--acento-hover);
+  --bs-form-valid-color: var(--principal);
+  --bs-form-valid-border-color: var(--principal);
+}
+
+.formulario .form-label {
+  margin-bottom: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.formulario small {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.formulario .form-control,
+.formulario .form-select {
+  padding: 0.75rem;
+  font-family: var(--fuente-texto);
+  font-size: var(--texto);
+  color: var(--principal);
+  background-color: var(--blanco);
+  border: 1px solid var(--principal);
+  border-radius: 0;
+}
+
+.formulario .form-select {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2328483B' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  padding-right: 2.25rem;
+}
+
+.formulario .form-control:focus,
+.formulario .form-select:focus,
+.formulario .form-check-input:focus {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px rgba(204, 94, 66, 0.35);
+}
+
+.formulario.was-validated .form-control:valid,
+.formulario.was-validated .form-control:invalid {
+  padding-right: 0.75rem;
+  background-image: none;
+}
+
+.formulario.was-validated .form-select:valid:not([multiple]):not([size]),
+.formulario.was-validated .form-select:invalid:not([multiple]):not([size]) {
+  padding-right: 2.25rem;
+  background-image: var(--bs-form-select-bg-img);
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+
+.formulario .invalid-feedback {
+  font-size: 0.875rem;
+}
+
+.formulario .form-check {
+  padding-left: 2rem;
+}
+
+.formulario .form-check-input {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  margin-left: -2rem;
+  background-color: var(--blanco);
+  border: 1px solid var(--principal);
+  border-radius: 0;
+}
+
+.formulario .form-check-input:checked {
+  --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23DEE4C2' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  background-color: var(--principal);
+  border-color: var(--principal);
+}
+
+.formulario.was-validated .form-check-input:invalid {
+  border-color: var(--bs-form-invalid-border-color);
+}
+
+.formulario.was-validated .form-check-input:invalid ~ .form-check-label {
+  color: var(--bs-form-invalid-color);
+}
+
+.formulario .btn {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card-formulario {
+    --relleno-x: 2rem;
+    --relleno-y: 2rem;
+  }
+
+  .formulario .btn {
+    width: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .encabezado-pagina {
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  .encabezado-pagina p {
+    margin: 0;
+  }
+
+  .card-formulario {
+    --relleno-x: 3.5rem;
+    --relleno-y: 3rem;
+  }
+
+  .card-formulario h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,12 @@
+/* EQUIPO */
+Estudiante: Salas Máximo
+Materias: Programación I · Desarrollo II
+Comisión: DGD2A
+Año: 2026
+
+/* SITIO */
+Proyecto: Gabrille, hamburguesería gourmet con salsas propias
+Idioma: Español (es-AR)
+Estándares: HTML5, CSS3, JavaScript
+Tecnologías: Bootstrap 5.3.8 (CDN)
+Tipografías: Syne y Chivo Mono (Google Fonts)

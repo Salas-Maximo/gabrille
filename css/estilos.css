@@ -1,0 +1,449 @@
+:root {
+  --principal: #152b37;
+  --secundario: #f1f0da;
+  --acento: #b9464e;
+  --acento-hover: #a63f46;
+
+  /* Neutros */
+  --negro: #1D1D1D;
+  --fondo-oscuro: #0a141a;
+  --blanco: #FFFFFF;
+  --gris: #A6A6A6;
+
+  /* Tipografías */
+  --fuente-titulos: "Syne", sans-serif;
+  --fuente-texto: "Chivo", monospace;
+
+  /* Escala de texto y espacios (mobile; se agranda en 992px) */
+  --titulo-1: 2.5rem;
+  --titulo-2: 2rem;
+  --texto: 1rem;
+  --espacio-seccion: 4rem;
+  --ancho-contenido: 1200px;
+
+  /* Efectos */
+  --transicion: 250ms ease;
+  --transicion-color: color 250ms ease, background-color 250ms ease, border-color 250ms ease;
+  --sombra: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  --linea: rgba(40, 72, 59, 0.2);
+  --foco: var(--acento);
+
+  /* Variables de Bootstrap reemplazadas por las del proyecto */
+  --bs-body-font-family: var(--fuente-texto);
+  --bs-body-font-size: var(--texto);
+  --bs-body-line-height: 1.6;
+  --bs-body-color: var(--principal);
+  --bs-body-bg: var(--secundario);
+  --bs-link-color-rgb: 40, 72, 59;
+  --bs-link-hover-color-rgb: 204, 94, 66;
+}
+
+
+/* 2. BASE
+   -------------------------------------------------------------------------- */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+}
+
+
+/* 3. NAVBAR
+   -------------------------------------------------------------------------- */
+.barra-navegacion {
+  --foco: var(--secundario);
+  --bs-navbar-padding-y: 1rem;
+  --bs-navbar-color: var(--secundario);
+  --bs-navbar-hover-color: var(--blanco);
+  --bs-navbar-active-color: var(--blanco);
+  --bs-navbar-brand-color: var(--secundario);
+  --bs-navbar-brand-hover-color: var(--blanco);
+  --bs-navbar-toggler-border-color: transparent;
+  --bs-navbar-toggler-focus-width: 0;
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23DEE4C2' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-color: var(--principal);
+}
+
+.barra-navegacion > .container {
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+.barra-navegacion .navbar-brand {
+  margin: 0;
+  line-height: 1;
+}
+
+.barra-navegacion .navbar-brand img {
+  display: block;
+  width: auto;
+  height: 2rem;
+}
+
+.barra-navegacion .navbar-toggler {
+  padding-inline: 0;
+}
+
+.barra-navegacion .navbar-collapse {
+  flex-basis: 100%;
+}
+
+.barra-navegacion .nav-link {
+  padding-block: 0.75rem;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color var(--transicion);
+}
+
+.barra-navegacion .nav-link.active {
+  text-decoration: underline;
+  text-decoration-color: var(--acento);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.5rem;
+}
+
+
+/* 4. BOTONES
+   -------------------------------------------------------------------------- */
+.btn {
+  --bs-btn-padding-x: 1.75rem;
+  --bs-btn-padding-y: 0.875rem;
+  --bs-btn-font-family: var(--fuente-texto);
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-font-weight: 700;
+  --bs-btn-line-height: 1;
+  --bs-btn-border-width: 0;
+  --bs-btn-border-radius: 0;
+  --bs-btn-focus-box-shadow: none;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: color var(--transicion), background-color var(--transicion);
+}
+
+.btn-acento {
+  --bs-btn-color: var(--secundario);
+  --bs-btn-bg: var(--acento);
+  --bs-btn-hover-color: var(--blanco);
+  --bs-btn-hover-bg: var(--acento-hover);
+  --bs-btn-active-color: var(--blanco);
+  --bs-btn-active-bg: var(--acento-hover);
+  --bs-btn-disabled-color: var(--secundario);
+  --bs-btn-disabled-bg: var(--acento);
+}
+
+.btn-principal {
+  --bs-btn-color: var(--secundario);
+  --bs-btn-bg: var(--principal);
+  --bs-btn-hover-color: var(--secundario);
+  --bs-btn-hover-bg: var(--negro);
+  --bs-btn-active-color: var(--secundario);
+  --bs-btn-active-bg: var(--negro);
+  --bs-btn-disabled-color: var(--secundario);
+  --bs-btn-disabled-bg: var(--principal);
+}
+
+.btn-claro {
+  --bs-btn-color: var(--principal);
+  --bs-btn-bg: var(--secundario);
+  --bs-btn-hover-color: var(--principal);
+  --bs-btn-hover-bg: var(--blanco);
+  --bs-btn-active-color: var(--principal);
+  --bs-btn-active-bg: var(--blanco);
+}
+
+/* Botón subrayado */
+.boton-texto {
+  padding: 0;
+  font-size: 0.875rem;
+  color: inherit;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+/* Botón de cierre*/
+.btn-close {
+  --bs-btn-close-opacity: 1;
+  --bs-btn-close-hover-opacity: 0.7;
+  --bs-btn-close-focus-shadow: none;
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2328483B'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+}
+
+
+/* 5. CARRUSEL
+   -------------------------------------------------------------------------- */
+.carousel {
+  --carrusel-color: var(--acento);
+  --carrusel-fondo: transparent;
+  --indicador-color: var(--acento);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  bottom: auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--carrusel-color);
+  background-color: var(--carrusel-fondo);
+  border: 2px solid var(--carrusel-color);
+  border-radius: 50%;
+  opacity: 1;
+  transition: color var(--transicion), background-color var(--transicion);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: var(--secundario);
+  background-color: var(--carrusel-color);
+  opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: auto;
+  height: auto;
+  background-image: none;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.carousel-control-prev-icon::before {
+  content: "\2039";
+}
+
+.carousel-control-next-icon::before {
+  content: "\203A";
+}
+
+.carousel-indicators {
+  position: static;
+  margin: 1.5rem 0 0;
+}
+
+.carousel-indicators [data-bs-target] {
+  box-sizing: border-box;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-inline: 0.3rem;
+  background-color: transparent;
+  background-clip: border-box;
+  border: 2px solid var(--indicador-color);
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.carousel-indicators .active {
+  background-color: var(--indicador-color);
+}
+
+
+/* 6. VENTANA MODAL DE DEMOSTRACIÓN (compra, reserva y contacto)
+   -------------------------------------------------------------------------- */
+.modal-demo {
+  
+  --bs-modal-bg: var(--secundario);
+  --bs-modal-color: var(--principal);
+  --bs-modal-border-width: 0;
+  --bs-modal-border-radius: 0;
+  --bs-modal-inner-border-radius: 0;
+  --bs-modal-header-border-width: 0;
+  --bs-modal-footer-border-width: 0;
+  --bs-modal-padding: 1.5rem;
+}
+
+.modal-demo .modal-title {
+  font-size: 1.75rem;
+}
+
+
+/* 7. IMAGEN DE FONDO
+   -------------------------------------------------------------------------- */
+.imagen-fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 0;
+  background-color: var(--principal);
+}
+
+.imagen-fondo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagen-fondo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--velo);
+}
+
+
+/* 8. FOOTER
+   -------------------------------------------------------------------------- */
+.pie-pagina {
+  --foco: var(--secundario);
+  padding-block: 3.5rem 2.5rem;
+  color: var(--gris);
+  background-color: var(--negro);
+}
+
+.pie-pagina .container {
+  display: grid;
+  gap: 2rem;
+  grid-template-areas:
+    "logo"
+    "nav"
+    "visita"
+    "redes"
+    "datos";
+}
+
+.logo-pie {
+  grid-area: logo;
+  justify-self: start;
+}
+
+.logo-pie img {
+  display: block;
+  width: auto;
+  height: 2.25rem;
+}
+
+.pie-pagina nav {
+  grid-area: nav;
+}
+
+.visita-pie {
+  grid-area: visita;
+}
+
+.pie-pagina h2 {
+  margin-bottom: 1rem;
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--blanco);
+}
+
+.pie-pagina ul,
+.pie-pagina address {
+  margin: 0;
+}
+
+.pie-pagina a {
+  color: var(--gris);
+  text-decoration: none;
+  transition: color var(--transicion);
+}
+
+.pie-pagina a:hover {
+  color: var(--secundario);
+}
+
+.redes-pie {
+  grid-area: redes;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.redes-pie a {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  filter: brightness(80%);
+}
+
+.redes-pie a:hover {
+  border-color: var(--secundario);
+  filter: none;
+}
+
+.redes-pie img {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.datos-pie {
+  grid-area: datos;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(222, 228, 194, 0.25);
+}
+
+
+/* 9. MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (min-width: 992px) {
+  :root {
+    --titulo-1: 4rem;
+    --titulo-2: 3rem;
+    --espacio-seccion: 6rem;
+  }
+
+  .barra-navegacion > .container {
+    justify-content: space-between;
+  }
+
+  .barra-navegacion .nav-link {
+    padding-inline: 1.5rem;
+  }
+
+  .imagen-fondo {
+    position: static;
+    z-index: auto;
+    background: none;
+  }
+
+  .imagen-fondo img {
+    height: auto;
+  }
+
+  .imagen-fondo::after {
+    display: none;
+  }
+
+  .pie-pagina {
+    padding-block: 4rem 3rem;
+  }
+
+  .pie-pagina .container {
+    grid-template-columns: 5fr 3fr 4fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "logo nav visita"
+      "redes nav visita"
+      "datos nav visita";
+  }
+
+  .datos-pie {
+    align-self: end;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--ancho-contenido);
+  }
+}
